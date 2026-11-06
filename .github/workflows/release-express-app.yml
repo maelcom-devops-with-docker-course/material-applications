@@ -34,3 +34,14 @@ jobs:
           context: express-app
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/express-app:latest
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy latest to render.com
+        uses: JorgeLNJunior/render-deploy@v1.5.0
+        with:
+          service_id: ${{ secrets.RENDER_SERVICE_ID_EXPRESS_APP }}
+          api_key: ${{ secrets.RENDER_API_KEY }}
+          wait_deploy: true
