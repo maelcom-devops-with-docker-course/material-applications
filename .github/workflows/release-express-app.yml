@@ -8,10 +8,6 @@ on:
       - 'express-app/**'
       - '.github/workflows/release-express-app.yml'
 
-defaults:
-  run:
-    working-directory: express-app
-
 jobs:
   build:
     runs-on: ubuntu-latest
